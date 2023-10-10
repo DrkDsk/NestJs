@@ -10,7 +10,7 @@ export class UsersController {
   constructor(private userService: UsersService) {}
 
   @UseGuards(AuthGuard)
-  @Get()
+  @Get('all')
   findAll() {
     return this.userService.findAll();
   }
