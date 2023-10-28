@@ -12,4 +12,8 @@ export class UsersService {
   async findAll() {
     return this.usersModule.find({});
   }
+
+  async findById(id: string) {
+    return this.usersModule.findById(id);
+  }
 }
