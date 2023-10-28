@@ -13,6 +13,7 @@ export class AuthService {
     @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
     private jwtAuthService: JwtService,
   ) {}
+
   async login(loginAuthDto: LoginAuthDto) {
     const { email, password } = loginAuthDto;
     const findUser = await this.userModel.findOne({ email });

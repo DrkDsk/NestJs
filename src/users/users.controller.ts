@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Request, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { AuthGuard } from '../auth/auth.guard';
@@ -13,5 +13,11 @@ export class UsersController {
   @Get('all')
   findAll() {
     return this.userService.findAll();
+  }
+
+  @Get('profile')
+  @UseGuards(AuthGuard)
+  getProfile(@Request() req: any) {
+    return req.user;
   }
 }

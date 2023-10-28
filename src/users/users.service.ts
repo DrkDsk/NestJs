@@ -6,14 +6,14 @@ import { Model } from 'mongoose';
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectModel(User.name) private usersModule: Model<UserDocument>,
+    @InjectModel(User.name) private readonly userModel: Model<UserDocument>
   ) {}
 
   async findAll() {
-    return this.usersModule.find({});
+    return this.userModel.find({});
   }
 
   async findById(id: string) {
-    return this.usersModule.findById(id);
+    return this.userModel.findById(id);
   }
 }
